@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: quest-analytics-service
+  
+  datasource:
+    url: jdbc:postgresql://localhost:5432/quest_analytics_db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+server:
+  port: 8081
+
+logging:
+  level:
+    com.questanalytics: INFO
+
