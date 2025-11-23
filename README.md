@@ -18,7 +18,8 @@ Quest Analytics Service is a REST microservice that provides analytics and stati
 ### Functionalities
 1. **Record Quest Completion** (POST) - Records when a quest is completed with XP earned
 2. **Update User Statistics** (PUT) - Updates user statistics (level, XP, quests completed)
-3. **Get Analytics Data** (GET) - Retrieves analytics data for a specific user
+3. **Delete Analytics Data** (DELETE) - Deletes analytics data for a user
+4. **Get Analytics Data** (GET) - Retrieves analytics data for a specific user
 
 ### REST Endpoints
 
@@ -31,6 +32,11 @@ Records a quest completion event.
 Updates user statistics.
 - **Body**: UserStatsUpdateDto (userId, totalExperience, level, questsCompleted)
 - **Returns**: 200 OK
+
+#### DELETE /api/analytics/user/{userId}
+Deletes analytics data for a user.
+- **Path Variable**: userId
+- **Returns**: 204 No Content
 
 #### GET /api/analytics/user/{userId}
 Retrieves analytics data for a user.
@@ -61,12 +67,24 @@ Retrieves analytics data for a user.
 - PostgreSQL 12+
 
 ### Database Setup
-1. Create PostgreSQL database:
+
+**Automatic Database Creation:**
+The service will automatically create the database if it doesn't exist when you first run it. You just need to:
+1. Make sure PostgreSQL is running
+2. Ensure the `postgres` user has permission to create databases
+3. Run the service - the database will be created automatically
+
+**Manual Database Setup (if automatic creation fails):**
+If automatic creation fails, you can create the database manually:
 ```sql
 CREATE DATABASE quest_analytics_db;
 ```
 
-2. Update `application.yml` with your database credentials if needed.
+**Schema Creation:**
+The database schema (tables, columns, etc.) is automatically created/updated by Hibernate when the service starts (configured via `ddl-auto: update`).
+
+**Update Configuration:**
+Update `application.yml` with your database credentials if needed (default: username=`postgres`, password=`postgres`).
 
 ### Running the Service
 1. Clone the repository
