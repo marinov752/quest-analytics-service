@@ -12,22 +12,6 @@ Quest Analytics Service is a REST microservice that provides analytics and stati
 - **Testing**: JUnit 5, Mockito
 - **Logging**: SLF4J
 
-## Project Requirements Compliance
-
-### Domain Entities (1 required, 1 implemented)
-1. **QuestAnalytics** - Tracks user analytics including:
-   - Total XP earned
-   - Total quests completed
-   - Current level
-   - Last updated timestamp
-   - UUID primary key
-
-### Functionalities (2 required, 4 implemented)
-1. **Record Quest Completion** (POST) - Records quest completion with XP earned
-2. **Update User Statistics** (PUT) - Updates user level, XP, and quest count
-3. **Delete Analytics Data** (DELETE) - Removes user analytics
-4. **Get Analytics Data** (GET) - Retrieves user analytics
-
 ### REST API Endpoints
 All endpoints follow REST constraints and use appropriate HTTP methods:
 
