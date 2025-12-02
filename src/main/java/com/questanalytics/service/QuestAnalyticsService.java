@@ -93,5 +93,18 @@ public class QuestAnalyticsService {
         
         return data;
     }
+
+    @Transactional
+    public void deleteAnalyticsData(UUID userId) {
+        logger.info("Deleting analytics data for user {}", userId);
+        
+        Optional<QuestAnalytics> analyticsOpt = questAnalyticsRepository.findByUserId(userId);
+        if (analyticsOpt.isPresent()) {
+            questAnalyticsRepository.delete(analyticsOpt.get());
+            logger.info("Analytics data deleted successfully for user {}", userId);
+        } else {
+            logger.warn("No analytics data found for user {}", userId);
+        }
+    }
 }
 

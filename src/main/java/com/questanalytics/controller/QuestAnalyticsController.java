@@ -44,6 +44,13 @@ public class QuestAnalyticsController {
         return ResponseEntity.ok().build();
     }
 
+    @DeleteMapping("/user/{userId}")
+    public ResponseEntity<Void> deleteAnalyticsData(@PathVariable UUID userId) {
+        logger.info("DELETE /api/analytics/user/{} called", userId);
+        questAnalyticsService.deleteAnalyticsData(userId);
+        return ResponseEntity.noContent().build();
+    }
+
     @GetMapping("/user/{userId}")
     public ResponseEntity<Map<String, Object>> getAnalyticsData(@PathVariable UUID userId) {
         logger.info("GET /api/analytics/user/{} called", userId);
